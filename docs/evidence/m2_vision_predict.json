@@ -1,0 +1,109 @@
+[
+  {
+    "image": "yt-GjxIno9rO4A-0049_jpg.rf.54e214348c06be0f0dc821b01f1d7005.jpg",
+    "status": 200,
+    "response": {
+      "data_origin": "model",
+      "model": {
+        "name": "mdris-yolov8n-flood",
+        "checkpoint": "models/vision/best.pt",
+        "trained_at": "2026-09-29T22:42:50+05:30"
+      },
+      "source": "officer_photo",
+      "detections": [],
+      "counts": {
+        "person_in_water": 0,
+        "person_in_vehicle": 0,
+        "person": 0,
+        "vehicle": 0
+      },
+      "vision_score": 0.0,
+      "vision_confidence": 0.5,
+      "severity_band": "Low",
+      "annotated_image_url": "/uploads/00137800cf524af29b205cb83931cc95_annotated.jpg",
+      "inference_ms": 4009.9
+    }
+  },
+  {
+    "image": "01187_jpg.rf.1c0b77c807c7d509de605612be734360.jpg",
+    "status": 200,
+    "response": {
+      "data_origin": "model",
+      "model": {
+        "name": "mdris-yolov8n-flood",
+        "checkpoint": "models/vision/best.pt",
+        "trained_at": "2026-09-29T22:42:50+05:30"
+      },
+      "source": "cctv",
+      "detections": [
+        {
+          "class_name": "person",
+          "confidence": 0.7438,
+          "bbox": {
+            "x1": 27,
+            "y1": 211,
+            "x2": 130,
+            "y2": 322
+          }
+        }
+      ],
+      "counts": {
+        "person_in_water": 0,
+        "person_in_vehicle": 0,
+        "person": 1,
+        "vehicle": 0
+      },
+      "vision_score": 0.3347,
+      "vision_confidence": 0.7438,
+      "severity_band": "Low",
+      "annotated_image_url": "/uploads/e45f84f0ba06458eb998950d88141274_annotated.jpg",
+      "inference_ms": 128.7
+    }
+  },
+  {
+    "image": "01070_jpg.rf.683568ef8cd4181f849c13d7b94b3f0c.jpg",
+    "status": 200,
+    "response": {
+      "data_origin": "model",
+      "model": {
+        "name": "mdris-yolov8n-flood",
+        "checkpoint": "models/vision/best.pt",
+        "trained_at": "2026-09-29T22:42:50+05:30"
+      },
+      "source": "citizen_upload",
+      "detections": [
+        {
+          "class_name": "person",
+          "confidence": 0.6955,
+          "bbox": {
+            "x1": 370,
+            "y1": 124,
+            "x2": 472,
+            "y2": 230
+          }
+        },
+        {
+          "class_name": "person",
+          "confidence": 0.3001,
+          "bbox": {
+            "x1": 340,
+            "y1": 99,
+            "x2": 553,
+            "y2": 240
+          }
+        }
+      ],
+      "counts": {
+        "person_in_water": 0,
+        "person_in_vehicle": 0,
+        "person": 2,
+        "vehicle": 0
+      },
+      "vision_score": 0.4058,
+      "vision_confidence": 0.6955,
+      "severity_band": "Moderate",
+      "annotated_image_url": "/uploads/1dde6012a9624428ad574fea875eded0_annotated.jpg",
+      "inference_ms": 22.9
+    }
+  }
+]

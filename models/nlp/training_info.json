@@ -1,0 +1,34 @@
+{
+  "trained_at": "2026-09-29T22:50:33+05:30",
+  "hardware": "NVIDIA GeForce RTX 2050 4GB",
+  "train_time_minutes": 3.7,
+  "epochs_run": 3,
+  "best_val_macro_f1": 0.7897089624643986,
+  "best_checkpoint": "C:\\Users\\SHAMIL\\Desktop\\MDRIS\\training\\runs\\distilbert_urgency\\checkpoint-978",
+  "val_history": [
+    {
+      "epoch": 1.0,
+      "eval_loss": 0.5454754829406738,
+      "eval_macro_f1": 0.7776371311560718,
+      "eval_accuracy": 0.8029850746268656
+    },
+    {
+      "epoch": 2.0,
+      "eval_loss": 0.5202082991600037,
+      "eval_macro_f1": 0.7897089624643986,
+      "eval_accuracy": 0.8143283582089552
+    },
+    {
+      "epoch": 3.0,
+      "eval_loss": 0.6303824186325073,
+      "eval_macro_f1": 0.7871382682035799,
+      "eval_accuracy": 0.8173134328358209
+    }
+  ],
+  "class_weights": {
+    "Low": 0.7153,
+    "Medium": 0.3975,
+    "High": 1.8872
+  },
+  "batch": 16
+}

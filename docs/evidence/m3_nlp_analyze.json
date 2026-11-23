@@ -1,0 +1,122 @@
+[
+  {
+    "test_csv_row": 1582,
+    "label_urgency": "Low",
+    "humaid_label": "not_humanitarian",
+    "status": 200,
+    "response": {
+      "data_origin": "model",
+      "model": {
+        "name": "mdris-distilbert-urgency",
+        "path": "models/nlp",
+        "trained_at": "2026-09-29T22:50:33+05:30"
+      },
+      "source": "officer_report",
+      "urgency": "Low",
+      "probabilities": {
+        "Low": 0.9814,
+        "Medium": 0.0128,
+        "High": 0.0059
+      },
+      "confidence": 0.9814,
+      "nlp_score": 0.1589,
+      "inference_ms": 719.6
+    }
+  },
+  {
+    "test_csv_row": 1626,
+    "label_urgency": "Medium",
+    "humaid_label": "rescue_volunteering_or_donation_effort",
+    "status": 200,
+    "response": {
+      "data_origin": "model",
+      "model": {
+        "name": "mdris-distilbert-urgency",
+        "path": "models/nlp",
+        "trained_at": "2026-09-29T22:50:33+05:30"
+      },
+      "source": "control_room_call",
+      "urgency": "Medium",
+      "probabilities": {
+        "Low": 0.0248,
+        "Medium": 0.9584,
+        "High": 0.0168
+      },
+      "confidence": 0.9584,
+      "nlp_score": 0.498,
+      "inference_ms": 21.2
+    }
+  },
+  {
+    "test_csv_row": 416,
+    "label_urgency": "Low",
+    "humaid_label": "other_relevant_information",
+    "status": 200,
+    "response": {
+      "data_origin": "model",
+      "model": {
+        "name": "mdris-distilbert-urgency",
+        "path": "models/nlp",
+        "trained_at": "2026-09-29T22:50:33+05:30"
+      },
+      "source": "citizen_sms",
+      "urgency": "Low",
+      "probabilities": {
+        "Low": 0.845,
+        "Medium": 0.1245,
+        "High": 0.0305
+      },
+      "confidence": 0.845,
+      "nlp_score": 0.2165,
+      "inference_ms": 19.8
+    }
+  },
+  {
+    "test_csv_row": 1414,
+    "label_urgency": "Medium",
+    "humaid_label": "rescue_volunteering_or_donation_effort",
+    "status": 200,
+    "response": {
+      "data_origin": "model",
+      "model": {
+        "name": "mdris-distilbert-urgency",
+        "path": "models/nlp",
+        "trained_at": "2026-09-29T22:50:33+05:30"
+      },
+      "source": "social_media",
+      "urgency": "Medium",
+      "probabilities": {
+        "Low": 0.0433,
+        "Medium": 0.9452,
+        "High": 0.0115
+      },
+      "confidence": 0.9452,
+      "nlp_score": 0.4894,
+      "inference_ms": 25.9
+    }
+  },
+  {
+    "test_csv_row": 1620,
+    "label_urgency": "High",
+    "humaid_label": "missing_or_found_people",
+    "status": 200,
+    "response": {
+      "data_origin": "model",
+      "model": {
+        "name": "mdris-distilbert-urgency",
+        "path": "models/nlp",
+        "trained_at": "2026-09-29T22:50:33+05:30"
+      },
+      "source": "citizen_sms",
+      "urgency": "High",
+      "probabilities": {
+        "Low": 0.0046,
+        "Medium": 0.0074,
+        "High": 0.988
+      },
+      "confidence": 0.988,
+      "nlp_score": 0.8936,
+      "inference_ms": 22.0
+    }
+  }
+]

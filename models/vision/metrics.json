@@ -1,0 +1,148 @@
+{
+  "model_name": "mdris-yolov8n-flood",
+  "task": "object_detection",
+  "base_model": "yolov8n.pt (COCO)",
+  "trained_at": "2026-09-29T22:42:50+05:30",
+  "hardware": "NVIDIA GeForce RTX 2050 4GB",
+  "train_time_minutes": 109.4,
+  "dataset": {
+    "name": "detecting humans in floods (GNOSEF) v2",
+    "url": "https://universe.roboflow.com/gnosef/detecting-humans-in-floods-gukif",
+    "licence": "Public Domain",
+    "splits": {
+      "train": 4152,
+      "val": 507,
+      "test": 387
+    }
+  },
+  "classes": [
+    "person_in_water",
+    "person_in_vehicle",
+    "person",
+    "vehicle"
+  ],
+  "hyperparameters": {
+    "imgsz": 640,
+    "epochs": 60,
+    "epochs_run": 60,
+    "patience": 15,
+    "batch": 8,
+    "workers": 2,
+    "optimizer": "auto",
+    "amp": true,
+    "seed": 42
+  },
+  "metrics": {
+    "test": {
+      "mAP50": 0.3837,
+      "mAP50_95": 0.1806,
+      "per_class": {
+        "person_in_water": {
+          "precision": null,
+          "recall": null,
+          "AP50": null,
+          "instances": 0,
+          "note": "no test instances; not evaluable"
+        },
+        "person_in_vehicle": {
+          "precision": null,
+          "recall": null,
+          "AP50": null,
+          "instances": 0,
+          "note": "no test instances; not evaluable"
+        },
+        "person": {
+          "precision": 0.6293,
+          "recall": 0.3296,
+          "AP50": 0.3837,
+          "instances": 1329
+        },
+        "vehicle": {
+          "precision": null,
+          "recall": null,
+          "AP50": null,
+          "instances": 0,
+          "note": "no test instances; not evaluable"
+        }
+      }
+    }
+  },
+  "baselines": {
+    "coco_yolov8n": {
+      "description": "COCO-pretrained yolov8n.pt, no fine-tuning; COCO person -> person, car/motorcycle/bus/truck -> vehicle. Cannot detect person_in_water or person_in_vehicle.",
+      "method": "simple all-point AP50, greedy same-class matching at IoU 0.5 (eval_vision.py)",
+      "per_class": {
+        "person": {
+          "AP50": 0.1373,
+          "instances": 1329
+        }
+      }
+    },
+    "finetuned_same_method": {
+      "description": "The fine-tuned model scored with the same simple AP50 code, for a like-for-like comparison.",
+      "method": "simple all-point AP50, greedy same-class matching at IoU 0.5 (eval_vision.py)",
+      "per_class": {
+        "person": {
+          "AP50": 0.3648,
+          "instances": 1329
+        }
+      }
+    }
+  },
+  "failure_cases": [
+    {
+      "file": "figures/failures/failure_1.jpg",
+      "image": "yt-GjxIno9rO4A-0024_jpg.rf.c3674c04ee8fab0703418bd976198bf1.jpg",
+      "false_negatives": 40,
+      "false_positives": 2
+    },
+    {
+      "file": "figures/failures/failure_2.jpg",
+      "image": "yt-wPFX79UM5OA-0001_jpg.rf.34a78cc5c27269520576265f9a38e857.jpg",
+      "false_negatives": 35,
+      "false_positives": 5
+    },
+    {
+      "file": "figures/failures/failure_3.jpg",
+      "image": "c02441_jpg.rf.20668e7d570ba46dc79958dc3e8a67f6.jpg",
+      "false_negatives": 7,
+      "false_positives": 12
+    },
+    {
+      "file": "figures/failures/failure_4.jpg",
+      "image": "b00001_jpg.rf.f6e6452b14fe1c429ff39241747c9af4.jpg",
+      "false_negatives": 2,
+      "false_positives": 10
+    },
+    {
+      "file": "figures/failures/failure_5.jpg",
+      "image": "yt-dmSoyW0TJCg-0009_jpg.rf.285b535d00d90dafe8f58f27cf92f8dc.jpg",
+      "false_negatives": 6,
+      "false_positives": 4
+    },
+    {
+      "file": "figures/failures/failure_6.jpg",
+      "image": "yt-GjxIno9rO4A-0049_jpg.rf.01edf36b0fb5b62388668001d7d33322.jpg",
+      "false_negatives": 9,
+      "false_positives": 0
+    }
+  ],
+  "figures": [
+    "figures/confusion_matrix.png",
+    "figures/PR_curve.png",
+    "figures/F1_curve.png",
+    "figures/results.png",
+    "figures/failures/failure_1.jpg",
+    "figures/failures/failure_2.jpg",
+    "figures/failures/failure_3.jpg",
+    "figures/failures/failure_4.jpg",
+    "figures/failures/failure_5.jpg",
+    "figures/failures/failure_6.jpg"
+  ],
+  "evaluated_on": "NVIDIA GeForce RTX 2050 4GB",
+  "notes": [
+    "The dataset export has no instances of ['person_in_water', 'person_in_vehicle', 'vehicle']; the model cannot detect them and their metrics are null (not evaluable), not zero.",
+    "Test split carved from the export's train/ by source stem (10%, seed 42); see DATA.md.",
+    "Roboflow's valid/ overlaps train/, so validation metrics used for early stopping are optimistic; only test metrics are reported here."
+  ]
+}

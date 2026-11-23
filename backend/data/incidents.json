@@ -1,0 +1,3962 @@
+{
+  "generated_at": "2026-09-30T10:46:09+05:30",
+  "seed": 42,
+  "simulated": true,
+  "model_versions": {
+    "vision": {
+      "name": "yolov8n-coco-pretrained",
+      "trained_at": null,
+      "fine_tuned": false,
+      "checkpoint": "backend/yolov8n.pt"
+    },
+    "nlp": {
+      "name": "mdris-distilbert-urgency",
+      "trained_at": "2026-09-29T22:50:33+05:30",
+      "fine_tuned": true,
+      "path": "models/nlp"
+    }
+  },
+  "design": {
+    "count": 40,
+    "mix": {
+      "image_text": 0.7,
+      "image_only": 0.15,
+      "text_only": 0.15
+    },
+    "concordant_share_of_paired": 0.6,
+    "vision_source_mix": {
+      "officer_photo": 0.3,
+      "drone": 0.15,
+      "cctv": 0.2,
+      "citizen_upload": 0.35
+    },
+    "text_source_mix": {
+      "officer_report": 0.25,
+      "control_room_call": 0.25,
+      "citizen_sms": 0.3,
+      "social_media": 0.2
+    },
+    "image_pool": "vision test split",
+    "text_pool": "NLP test split",
+    "timestamps": "uniform over the 6 h before generation",
+    "locations": "Chennai-area localities with +-0.005 deg jitter"
+  },
+  "incidents": [
+    {
+      "id": "SIM-0001",
+      "simulated": true,
+      "created_at": "2026-09-30T04:55:01+05:30",
+      "pairing": "image_only",
+      "location": {
+        "name": "Manali",
+        "district": "Chennai",
+        "lat": 13.16709,
+        "lon": 80.2717
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0001.jpg",
+        "source": "drone",
+        "dataset_file": "test/images/c01181_jpg.rf.719b14ec36f09328bcc9ba7f5b082dc9.jpg"
+      },
+      "text": null,
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "drone",
+        "detections": [
+          {
+            "class_name": "person",
+            "confidence": 0.8591,
+            "bbox": {
+              "x1": 392,
+              "y1": 215,
+              "x2": 508,
+              "y2": 358
+            }
+          }
+        ],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 1,
+          "vehicle": 0
+        },
+        "vision_score": 0.3866,
+        "vision_confidence": 0.8591,
+        "severity_band": "Moderate",
+        "annotated_image_url": "/static/incidents/SIM-0001.jpg",
+        "inference_ms": 125.9
+      },
+      "nlp": null,
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 38.7,
+        "risk_band": "Moderate",
+        "evidence_strength": 0.464,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": true,
+        "dominant_class": "person",
+        "suggested_action": "Field officer check; alert relief camp",
+        "breakdown": {
+          "S_v": 0.3866,
+          "conf_v": 0.8591,
+          "reliability_v": 0.9,
+          "eff_v": 0.4639,
+          "S_n": null,
+          "conf_n": null,
+          "reliability_n": null,
+          "eff_n": 0.0,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0002",
+      "simulated": true,
+      "created_at": "2026-09-30T05:06:12+05:30",
+      "pairing": "image_only",
+      "location": {
+        "name": "Ashok Nagar",
+        "district": "Chennai",
+        "lat": 13.03159,
+        "lon": 80.21687
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0002.jpg",
+        "source": "officer_photo",
+        "dataset_file": "test/images/01171_jpg.rf.7643d805ef359509fa29ead67c41c7b9.jpg"
+      },
+      "text": null,
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "officer_photo",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0002.jpg",
+        "inference_ms": 119.7
+      },
+      "nlp": null,
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 0.0,
+        "risk_band": "Low",
+        "evidence_strength": 0.3,
+        "evidence_level": "Weak",
+        "conflict": false,
+        "single_source": true,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 1.0,
+          "eff_v": 0.3,
+          "S_n": null,
+          "conf_n": null,
+          "reliability_n": null,
+          "eff_n": 0.0,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0003",
+      "simulated": true,
+      "created_at": "2026-09-30T05:22:47+05:30",
+      "pairing": "random",
+      "location": {
+        "name": "Velachery",
+        "district": "Chennai",
+        "lat": 12.986,
+        "lon": 80.21499
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0003.jpg",
+        "source": "officer_photo",
+        "dataset_file": "test/images/c02441_jpg.rf.aff4b1532c745f9b9d2869815c86b0fa.jpg"
+      },
+      "text": {
+        "content": "A local 4-H group; Kids, Pigs, and Udders, are collecting donations for the Nebraska flood victims this Saturday and Sunday at Tiffin Rural King and Tiffin Tractor Supply. Their goal is to fill two entire semi trucks with supplies to aid in the relief efforts in Nebraska.",
+        "source": "officer_report",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "midwestern_us_floods_2019"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "officer_photo",
+        "detections": [
+          {
+            "class_name": "person",
+            "confidence": 0.7025,
+            "bbox": {
+              "x1": 149,
+              "y1": 66,
+              "x2": 204,
+              "y2": 276
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.6699,
+            "bbox": {
+              "x1": 731,
+              "y1": 37,
+              "x2": 780,
+              "y2": 258
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.6483,
+            "bbox": {
+              "x1": 432,
+              "y1": 43,
+              "x2": 471,
+              "y2": 190
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.6106,
+            "bbox": {
+              "x1": 460,
+              "y1": 394,
+              "x2": 530,
+              "y2": 457
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.5618,
+            "bbox": {
+              "x1": 199,
+              "y1": 55,
+              "x2": 249,
+              "y2": 264
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.5298,
+            "bbox": {
+              "x1": 466,
+              "y1": 24,
+              "x2": 507,
+              "y2": 166
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.4096,
+            "bbox": {
+              "x1": 238,
+              "y1": 111,
+              "x2": 290,
+              "y2": 244
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.3461,
+            "bbox": {
+              "x1": 300,
+              "y1": 110,
+              "x2": 347,
+              "y2": 203
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.3216,
+            "bbox": {
+              "x1": 32,
+              "y1": 1,
+              "x2": 73,
+              "y2": 143
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.3174,
+            "bbox": {
+              "x1": 507,
+              "y1": 11,
+              "x2": 545,
+              "y2": 127
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.3158,
+            "bbox": {
+              "x1": 390,
+              "y1": 42,
+              "x2": 435,
+              "y2": 184
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.2935,
+            "bbox": {
+              "x1": 508,
+              "y1": 12,
+              "x2": 545,
+              "y2": 175
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.2864,
+            "bbox": {
+              "x1": 503,
+              "y1": 53,
+              "x2": 571,
+              "y2": 212
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.2591,
+            "bbox": {
+              "x1": 0,
+              "y1": 151,
+              "x2": 29,
+              "y2": 271
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.2567,
+            "bbox": {
+              "x1": 540,
+              "y1": 0,
+              "x2": 581,
+              "y2": 98
+            }
+          }
+        ],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 15,
+          "vehicle": 0
+        },
+        "vision_score": 0.9643,
+        "vision_confidence": 0.7025,
+        "severity_band": "Critical",
+        "annotated_image_url": "/static/incidents/SIM-0003.jpg",
+        "inference_ms": 129.4
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "officer_report",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.0198,
+          "Medium": 0.9688,
+          "High": 0.0115
+        },
+        "confidence": 0.9688,
+        "nlp_score": 0.4977,
+        "inference_ms": 71.0
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 74.1,
+        "risk_band": "High",
+        "evidence_strength": 0.809,
+        "evidence_level": "Strong",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "person",
+        "suggested_action": "Organise evacuation; send relief supplies",
+        "breakdown": {
+          "S_v": 0.9643,
+          "conf_v": 0.7025,
+          "reliability_v": 1.0,
+          "eff_v": 0.4215,
+          "S_n": 0.4977,
+          "conf_n": 0.9688,
+          "reliability_n": 1.0,
+          "eff_n": 0.3875,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0004",
+      "simulated": true,
+      "created_at": "2026-09-30T05:37:49+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Tambaram",
+        "district": "Chengalpattu",
+        "lat": 12.92464,
+        "lon": 80.09614
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0004.jpg",
+        "source": "citizen_upload",
+        "dataset_file": "test/images/d01801_jpg.rf.113bf81f5b395f118e1572ce080d33ff.jpg"
+      },
+      "text": {
+        "content": "#KeralaFloodRelief Admiral Sunil Lanba CNS hands over a cheque of Rs. 8.9 Crores to @USER Shri Pinarayi Vijayan towards CMs Disaster Relief Fund, as a voluntary contribution from the salaries of #IndianNavy personnel @USER @USER @USER",
+        "source": "control_room_call",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "citizen_upload",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0004.jpg",
+        "inference_ms": 82.5
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.0374,
+          "Medium": 0.9534,
+          "High": 0.0092
+        },
+        "confidence": 0.9534,
+        "nlp_score": 0.4906,
+        "inference_ms": 54.7
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 30.9,
+        "risk_band": "Low",
+        "evidence_strength": 0.485,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 0.6,
+          "eff_v": 0.18,
+          "S_n": 0.4906,
+          "conf_n": 0.9534,
+          "reliability_n": 0.8,
+          "eff_n": 0.3051,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0005",
+      "simulated": true,
+      "created_at": "2026-09-30T05:54:20+05:30",
+      "pairing": "text_only",
+      "location": {
+        "name": "Perungudi",
+        "district": "Chennai",
+        "lat": 12.96807,
+        "lon": 80.24278
+      },
+      "image": null,
+      "text": {
+        "content": "Since the onset of monsoon rains, India has seen many events of flooding occurring almost every week submerging roads, houses, buildings, and almost everything that came on its way. #floods #facts #keralafloods #environment #water #rivers",
+        "source": "citizen_sms",
+        "humaid_label": "other_relevant_information",
+        "event": "kerala_floods_2018"
+      },
+      "vision": null,
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "citizen_sms",
+        "urgency": "Low",
+        "probabilities": {
+          "Low": 0.5916,
+          "Medium": 0.3896,
+          "High": 0.0187
+        },
+        "confidence": 0.5916,
+        "nlp_score": 0.3004,
+        "inference_ms": 56.2
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 30.0,
+        "risk_band": "Low",
+        "evidence_strength": 0.142,
+        "evidence_level": "Weak",
+        "conflict": false,
+        "single_source": true,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": null,
+          "conf_v": null,
+          "reliability_v": null,
+          "eff_v": 0.0,
+          "S_n": 0.3004,
+          "conf_n": 0.5916,
+          "reliability_n": 0.6,
+          "eff_n": 0.142,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0006",
+      "simulated": true,
+      "created_at": "2026-09-30T06:19:24+05:30",
+      "pairing": "random",
+      "location": {
+        "name": "Manali",
+        "district": "Chennai",
+        "lat": 13.16888,
+        "lon": 80.26948
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0006.jpg",
+        "source": "officer_photo",
+        "dataset_file": "test/images/yt-GjxIno9rO4A-0037_jpg.rf.1942ce8154c6de4421b6c5825516601f.jpg"
+      },
+      "text": {
+        "content": "Kerala is preparing for the danger of diseases that could break out following the #KeralaFloods disaster, finds @USER Leptospirosis is definitely the bigger risk because everyone is wading through water and they don’t have much of a choice.",
+        "source": "control_room_call",
+        "humaid_label": "other_relevant_information",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "officer_photo",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0006.jpg",
+        "inference_ms": 125.5
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "Low",
+        "probabilities": {
+          "Low": 0.8726,
+          "Medium": 0.1072,
+          "High": 0.0202
+        },
+        "confidence": 0.8726,
+        "nlp_score": 0.2027,
+        "inference_ms": 61.4
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 9.8,
+        "risk_band": "Low",
+        "evidence_strength": 0.579,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 1.0,
+          "eff_v": 0.3,
+          "S_n": 0.2027,
+          "conf_n": 0.8726,
+          "reliability_n": 0.8,
+          "eff_n": 0.2792,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0007",
+      "simulated": true,
+      "created_at": "2026-09-30T06:20:49+05:30",
+      "pairing": "random",
+      "location": {
+        "name": "Mylapore",
+        "district": "Chennai",
+        "lat": 13.02916,
+        "lon": 80.26002
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0007.jpg",
+        "source": "citizen_upload",
+        "dataset_file": "test/images/b00821_jpg.rf.4a87bcfd22fa5d24f720ab5c4149356e.jpg"
+      },
+      "text": {
+        "content": "Factual Highlights of the Modi Government’s Action Battling Kerala Floods | The flood is not just in Kerala, it is also out here - a flood of misinformation. We set the record straight on what the Modi Government has done in Kerala. via @USER",
+        "source": "social_media",
+        "humaid_label": "other_relevant_information",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "citizen_upload",
+        "detections": [
+          {
+            "class_name": "person",
+            "confidence": 0.7854,
+            "bbox": {
+              "x1": 41,
+              "y1": 202,
+              "x2": 116,
+              "y2": 329
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.7225,
+            "bbox": {
+              "x1": 448,
+              "y1": 228,
+              "x2": 648,
+              "y2": 421
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.3588,
+            "bbox": {
+              "x1": 667,
+              "y1": 280,
+              "x2": 711,
+              "y2": 415
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.3475,
+            "bbox": {
+              "x1": 703,
+              "y1": 21,
+              "x2": 784,
+              "y2": 85
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.338,
+            "bbox": {
+              "x1": 574,
+              "y1": 29,
+              "x2": 675,
+              "y2": 85
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.3251,
+            "bbox": {
+              "x1": 235,
+              "y1": 198,
+              "x2": 309,
+              "y2": 320
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.2887,
+            "bbox": {
+              "x1": 703,
+              "y1": 21,
+              "x2": 784,
+              "y2": 85
+            }
+          }
+        ],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 4,
+          "vehicle": 3
+        },
+        "vision_score": 0.7311,
+        "vision_confidence": 0.7854,
+        "severity_band": "High",
+        "annotated_image_url": "/static/incidents/SIM-0007.jpg",
+        "inference_ms": 119.4
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "social_media",
+        "urgency": "Low",
+        "probabilities": {
+          "Low": 0.9739,
+          "Medium": 0.0218,
+          "High": 0.0044
+        },
+        "confidence": 0.9739,
+        "nlp_score": 0.1609,
+        "inference_ms": 62.4
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 49.9,
+        "risk_band": "Moderate",
+        "evidence_strength": 0.478,
+        "evidence_level": "Fair",
+        "conflict": true,
+        "single_source": false,
+        "dominant_class": "person",
+        "suggested_action": "Field officer check; alert relief camp. Signals disagree: verify on ground before committing resources.",
+        "breakdown": {
+          "S_v": 0.7311,
+          "conf_v": 0.7854,
+          "reliability_v": 0.6,
+          "eff_v": 0.2827,
+          "S_n": 0.1609,
+          "conf_n": 0.9739,
+          "reliability_n": 0.5,
+          "eff_n": 0.1948,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0008",
+      "simulated": true,
+      "created_at": "2026-09-30T06:29:11+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Kotturpuram",
+        "district": "Chennai",
+        "lat": 13.02241,
+        "lon": 80.23898
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0008.jpg",
+        "source": "cctv",
+        "dataset_file": "test/images/c00641_jpg.rf.5a2eb64387cc9adaa7c5f5bbed04a59f.jpg"
+      },
+      "text": {
+        "content": "Many elitist keralites had this snobbish mentality towards fishermen (despite being such a fish-eating population!). But when flood waters covered Kerala, they showed up and at current current count have rescued 1lac+ people. Malayalam social media is filled with tributes.",
+        "source": "social_media",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "cctv",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0008.jpg",
+        "inference_ms": 119.5
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "social_media",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.1044,
+          "Medium": 0.8803,
+          "High": 0.0153
+        },
+        "confidence": 0.8803,
+        "nlp_score": 0.4696,
+        "inference_ms": 58.9
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 19.2,
+        "risk_band": "Low",
+        "evidence_strength": 0.431,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 0.85,
+          "eff_v": 0.255,
+          "S_n": 0.4696,
+          "conf_n": 0.8803,
+          "reliability_n": 0.5,
+          "eff_n": 0.1761,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0009",
+      "simulated": true,
+      "created_at": "2026-09-30T06:30:47+05:30",
+      "pairing": "text_only",
+      "location": {
+        "name": "Mudichur",
+        "district": "Chengalpattu",
+        "lat": 12.90702,
+        "lon": 80.07272
+      },
+      "image": null,
+      "text": {
+        "content": "@USER @USER @USER Kerala flood relief contribution by staff and students given to Honble CM of Kerala @USER",
+        "source": "social_media",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": null,
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "social_media",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.0346,
+          "Medium": 0.9549,
+          "High": 0.0106
+        },
+        "confidence": 0.9549,
+        "nlp_score": 0.4922,
+        "inference_ms": 42.3
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 49.2,
+        "risk_band": "Moderate",
+        "evidence_strength": 0.191,
+        "evidence_level": "Weak",
+        "conflict": false,
+        "single_source": true,
+        "dominant_class": "text_only",
+        "suggested_action": "Verify through field officer",
+        "breakdown": {
+          "S_v": null,
+          "conf_v": null,
+          "reliability_v": null,
+          "eff_v": 0.0,
+          "S_n": 0.4922,
+          "conf_n": 0.9549,
+          "reliability_n": 0.5,
+          "eff_n": 0.191,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0010",
+      "simulated": true,
+      "created_at": "2026-09-30T06:33:54+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Mylapore",
+        "district": "Chennai",
+        "lat": 13.03696,
+        "lon": 80.26486
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0010.jpg",
+        "source": "cctv",
+        "dataset_file": "test/images/c01261_jpg.rf.2592d89e3c5252a52a5c253bc48e2759.jpg"
+      },
+      "text": {
+        "content": "A musical performance to raise funds for the people affected by floods in Kerala &amp; Kodagu featuring celebrated artists from all across India. 31 Aug 2018, 7:30 PM onwards - Gurgaon &amp; Bangalore #100PipersPlayForACause #KeralaFloodRelief #KodaguFloodRelief",
+        "source": "officer_report",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "cctv",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0010.jpg",
+        "inference_ms": 93.2
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "officer_report",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.0598,
+          "Medium": 0.9277,
+          "High": 0.0126
+        },
+        "confidence": 0.9277,
+        "nlp_score": 0.4842,
+        "inference_ms": 77.5
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 28.7,
+        "risk_band": "Low",
+        "evidence_strength": 0.626,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 0.85,
+          "eff_v": 0.255,
+          "S_n": 0.4842,
+          "conf_n": 0.9277,
+          "reliability_n": 1.0,
+          "eff_n": 0.3711,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0011",
+      "simulated": true,
+      "created_at": "2026-09-30T06:37:43+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "KK Nagar",
+        "district": "Chennai",
+        "lat": 13.04048,
+        "lon": 80.19811
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0011.jpg",
+        "source": "cctv",
+        "dataset_file": "test/images/a00661_jpg.rf.bd4f9b89ba52278d2b2b4c3eb1d731fd.jpg"
+      },
+      "text": {
+        "content": "Proud moment for @USER @USER Exemplary work for flood relief .. RSS should learn something from them ὄD #KeralaFloodRelief #KeralaFloods #KeralaReliefFund #InternationalYouthDay",
+        "source": "control_room_call",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "cctv",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0011.jpg",
+        "inference_ms": 102.6
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "Low",
+        "probabilities": {
+          "Low": 0.7263,
+          "Medium": 0.2615,
+          "High": 0.0121
+        },
+        "confidence": 0.7263,
+        "nlp_score": 0.2506,
+        "inference_ms": 42.9
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 11.9,
+        "risk_band": "Low",
+        "evidence_strength": 0.487,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 0.85,
+          "eff_v": 0.255,
+          "S_n": 0.2506,
+          "conf_n": 0.7263,
+          "reliability_n": 0.8,
+          "eff_n": 0.2324,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0012",
+      "simulated": true,
+      "created_at": "2026-09-30T06:48:01+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Kotturpuram",
+        "district": "Chennai",
+        "lat": 13.02122,
+        "lon": 80.23806
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0012.jpg",
+        "source": "citizen_upload",
+        "dataset_file": "test/images/a00421_jpg.rf.f8878f91aac2906a549e5403d8ba4ff4.jpg"
+      },
+      "text": {
+        "content": "MD gubernatorial debate policing, flooding",
+        "source": "citizen_sms",
+        "humaid_label": "not_humanitarian",
+        "event": "maryland_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "citizen_upload",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0012.jpg",
+        "inference_ms": 97.8
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "citizen_sms",
+        "urgency": "Low",
+        "probabilities": {
+          "Low": 0.9369,
+          "Medium": 0.0554,
+          "High": 0.0077
+        },
+        "confidence": 0.9369,
+        "nlp_score": 0.1752,
+        "inference_ms": 34.1
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 9.7,
+        "risk_band": "Low",
+        "evidence_strength": 0.405,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 0.6,
+          "eff_v": 0.18,
+          "S_n": 0.1752,
+          "conf_n": 0.9369,
+          "reliability_n": 0.6,
+          "eff_n": 0.2249,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0013",
+      "simulated": true,
+      "created_at": "2026-09-30T06:51:58+05:30",
+      "pairing": "image_only",
+      "location": {
+        "name": "Saidapet",
+        "district": "Chennai",
+        "lat": 13.02337,
+        "lon": 80.22245
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0013.jpg",
+        "source": "citizen_upload",
+        "dataset_file": "test/images/c01181_jpg.rf.abcade91c9c9f832c780d4ddbf28e69b.jpg"
+      },
+      "text": null,
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "citizen_upload",
+        "detections": [
+          {
+            "class_name": "person",
+            "confidence": 0.5957,
+            "bbox": {
+              "x1": 390,
+              "y1": 281,
+              "x2": 507,
+              "y2": 414
+            }
+          }
+        ],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 1,
+          "vehicle": 0
+        },
+        "vision_score": 0.2681,
+        "vision_confidence": 0.5957,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0013.jpg",
+        "inference_ms": 100.8
+      },
+      "nlp": null,
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 26.8,
+        "risk_band": "Low",
+        "evidence_strength": 0.214,
+        "evidence_level": "Weak",
+        "conflict": false,
+        "single_source": true,
+        "dominant_class": "person",
+        "suggested_action": "Monitor",
+        "breakdown": {
+          "S_v": 0.2681,
+          "conf_v": 0.5957,
+          "reliability_v": 0.6,
+          "eff_v": 0.2145,
+          "S_n": null,
+          "conf_n": null,
+          "reliability_n": null,
+          "eff_n": 0.0,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0014",
+      "simulated": true,
+      "created_at": "2026-09-30T06:55:49+05:30",
+      "pairing": "text_only",
+      "location": {
+        "name": "Ashok Nagar",
+        "district": "Chennai",
+        "lat": 13.0336,
+        "lon": 80.21538
+      },
+      "image": null,
+      "text": {
+        "content": "Shocking and Saddening. @USER &amp; @USER youth team mobilized medicines, sanitary napkins &amp; other items weighing around 200 tons and deployed volunteer for its distribution in #Keralafloods from #Ahmedabad. They got a rude shock after seeing mismanagement in #Kerala",
+        "source": "citizen_sms",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": null,
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "citizen_sms",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.0296,
+          "Medium": 0.9312,
+          "High": 0.0392
+        },
+        "confidence": 0.9312,
+        "nlp_score": 0.5053,
+        "inference_ms": 56.5
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 50.5,
+        "risk_band": "Moderate",
+        "evidence_strength": 0.223,
+        "evidence_level": "Weak",
+        "conflict": false,
+        "single_source": true,
+        "dominant_class": "text_only",
+        "suggested_action": "Verify through field officer",
+        "breakdown": {
+          "S_v": null,
+          "conf_v": null,
+          "reliability_v": null,
+          "eff_v": 0.0,
+          "S_n": 0.5053,
+          "conf_n": 0.9312,
+          "reliability_n": 0.6,
+          "eff_n": 0.2235,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0015",
+      "simulated": true,
+      "created_at": "2026-09-30T07:05:14+05:30",
+      "pairing": "text_only",
+      "location": {
+        "name": "Saidapet",
+        "district": "Chennai",
+        "lat": 13.02095,
+        "lon": 80.22636
+      },
+      "image": null,
+      "text": {
+        "content": "In response to a Facebook appeal, #RF organized dinner &amp; breakfast for 1100 individuals, along with water bottles, at St. Antonys School camp, Mulavukad village, Ernakulam District. #KeralaFloodRescue #KeralaFloodRelief #RFForKerala",
+        "source": "citizen_sms",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": null,
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "citizen_sms",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.2778,
+          "Medium": 0.6982,
+          "High": 0.0239
+        },
+        "confidence": 0.6982,
+        "nlp_score": 0.4123,
+        "inference_ms": 61.4
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 41.2,
+        "risk_band": "Moderate",
+        "evidence_strength": 0.168,
+        "evidence_level": "Weak",
+        "conflict": false,
+        "single_source": true,
+        "dominant_class": "text_only",
+        "suggested_action": "Verify through field officer",
+        "breakdown": {
+          "S_v": null,
+          "conf_v": null,
+          "reliability_v": null,
+          "eff_v": 0.0,
+          "S_n": 0.4123,
+          "conf_n": 0.6982,
+          "reliability_n": 0.6,
+          "eff_n": 0.1676,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0016",
+      "simulated": true,
+      "created_at": "2026-09-30T07:10:51+05:30",
+      "pairing": "image_only",
+      "location": {
+        "name": "Adyar",
+        "district": "Chennai",
+        "lat": 13.00472,
+        "lon": 80.25981
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0016.jpg",
+        "source": "officer_photo",
+        "dataset_file": "test/images/01166_jpg.rf.272b41a9587dd8bb8b435513a2e53f51.jpg"
+      },
+      "text": null,
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "officer_photo",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0016.jpg",
+        "inference_ms": 112.6
+      },
+      "nlp": null,
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 0.0,
+        "risk_band": "Low",
+        "evidence_strength": 0.3,
+        "evidence_level": "Weak",
+        "conflict": false,
+        "single_source": true,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 1.0,
+          "eff_v": 0.3,
+          "S_n": null,
+          "conf_n": null,
+          "reliability_n": null,
+          "eff_n": 0.0,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0017",
+      "simulated": true,
+      "created_at": "2026-09-30T07:13:40+05:30",
+      "pairing": "random",
+      "location": {
+        "name": "Saidapet",
+        "district": "Chennai",
+        "lat": 13.01874,
+        "lon": 80.22275
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0017.jpg",
+        "source": "cctv",
+        "dataset_file": "test/images/a00621_jpg.rf.b2dd53411d80ec027bca63e35c2c7e44.jpg"
+      },
+      "text": {
+        "content": "• #AllIndiaSFC s #Flood Relief Essential materials was sent to Kerala via 3 trucks.. Already 1truck reached Kerala.. Tomorrow afternoon the remaining materials will reach Kerala.. On Wednesday we will provide it to the people. #KeralaFloodRelief #KeralaFloods @USER",
+        "source": "control_room_call",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "cctv",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0017.jpg",
+        "inference_ms": 130.8
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.0239,
+          "Medium": 0.9539,
+          "High": 0.0222
+        },
+        "confidence": 0.9539,
+        "nlp_score": 0.5005,
+        "inference_ms": 69.7
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 27.3,
+        "risk_band": "Low",
+        "evidence_strength": 0.56,
+        "evidence_level": "Fair",
+        "conflict": true,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log. Signals disagree: verify on ground before committing resources.",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 0.85,
+          "eff_v": 0.255,
+          "S_n": 0.5005,
+          "conf_n": 0.9539,
+          "reliability_n": 0.8,
+          "eff_n": 0.3052,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0018",
+      "simulated": true,
+      "created_at": "2026-09-30T07:18:59+05:30",
+      "pairing": "random",
+      "location": {
+        "name": "Velachery",
+        "district": "Chennai",
+        "lat": 12.98144,
+        "lon": 80.21625
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0018.jpg",
+        "source": "cctv",
+        "dataset_file": "test/images/a01121_jpg.rf.10ec11a98114d97722cc742a0322fbb0.jpg"
+      },
+      "text": {
+        "content": "@USER Omaha, Nebraska and donate some funds to flood relief.",
+        "source": "control_room_call",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "midwestern_us_floods_2019"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "cctv",
+        "detections": [
+          {
+            "class_name": "person",
+            "confidence": 0.733,
+            "bbox": {
+              "x1": 485,
+              "y1": 316,
+              "x2": 678,
+              "y2": 480
+            }
+          }
+        ],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 1,
+          "vehicle": 0
+        },
+        "vision_score": 0.3298,
+        "vision_confidence": 0.733,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0018.jpg",
+        "inference_ms": 113.3
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.025,
+          "Medium": 0.9647,
+          "High": 0.0103
+        },
+        "confidence": 0.9647,
+        "nlp_score": 0.4954,
+        "inference_ms": 40.7
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 40.5,
+        "risk_band": "Moderate",
+        "evidence_strength": 0.683,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "person",
+        "suggested_action": "Field officer check; alert relief camp",
+        "breakdown": {
+          "S_v": 0.3298,
+          "conf_v": 0.733,
+          "reliability_v": 0.85,
+          "eff_v": 0.3738,
+          "S_n": 0.4954,
+          "conf_n": 0.9647,
+          "reliability_n": 0.8,
+          "eff_n": 0.3087,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0019",
+      "simulated": true,
+      "created_at": "2026-09-30T07:19:00+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Perungudi",
+        "district": "Chennai",
+        "lat": 12.9638,
+        "lon": 80.2499
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0019.jpg",
+        "source": "citizen_upload",
+        "dataset_file": "test/images/yt-wPFX79UM5OA-0001_jpg.rf.bfdc235463afae3dee3b6a20842bec99.jpg"
+      },
+      "text": {
+        "content": "#Kochi friends pls note. Medicines and baby food needed at GCDA complex Panampally Nagar. . please treat this urgent. #keralafloods #kerala",
+        "source": "control_room_call",
+        "humaid_label": "requests_or_urgent_needs",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "citizen_upload",
+        "detections": [
+          {
+            "class_name": "vehicle",
+            "confidence": 0.6226,
+            "bbox": {
+              "x1": 216,
+              "y1": 232,
+              "x2": 314,
+              "y2": 263
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.507,
+            "bbox": {
+              "x1": 520,
+              "y1": 120,
+              "x2": 547,
+              "y2": 191
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.397,
+            "bbox": {
+              "x1": 491,
+              "y1": 148,
+              "x2": 523,
+              "y2": 216
+            }
+          }
+        ],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 2,
+          "vehicle": 1
+        },
+        "vision_score": 0.4252,
+        "vision_confidence": 0.6226,
+        "severity_band": "Moderate",
+        "annotated_image_url": "/static/incidents/SIM-0019.jpg",
+        "inference_ms": 112.6
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "High",
+        "probabilities": {
+          "Low": 0.0064,
+          "Medium": 0.0187,
+          "High": 0.9749
+        },
+        "confidence": 0.9749,
+        "nlp_score": 0.8877,
+        "inference_ms": 49.5
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 69.4,
+        "risk_band": "High",
+        "evidence_strength": 0.536,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "person",
+        "suggested_action": "Organise evacuation; send relief supplies",
+        "breakdown": {
+          "S_v": 0.4252,
+          "conf_v": 0.6226,
+          "reliability_v": 0.6,
+          "eff_v": 0.2241,
+          "S_n": 0.8877,
+          "conf_n": 0.9749,
+          "reliability_n": 0.8,
+          "eff_n": 0.312,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0020",
+      "simulated": true,
+      "created_at": "2026-09-30T07:41:43+05:30",
+      "pairing": "random",
+      "location": {
+        "name": "Velachery",
+        "district": "Chennai",
+        "lat": 12.98167,
+        "lon": 80.21491
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0020.jpg",
+        "source": "officer_photo",
+        "dataset_file": "test/images/01054_jpg.rf.2412017a143e0d983fb1b8ca9e1a9686.jpg"
+      },
+      "text": {
+        "content": "Kerala’s Communist Government Wants To Deduct One Month Salary Of Its Staff For Flood Relief, Employees Resist. Opposition led by Congress oppose Pinarayi Vijayan government’s decision saying that state should deduct amount only if employees give consent",
+        "source": "control_room_call",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "officer_photo",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0020.jpg",
+        "inference_ms": 136.9
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "Low",
+        "probabilities": {
+          "Low": 0.9311,
+          "Medium": 0.0596,
+          "High": 0.0093
+        },
+        "confidence": 0.9311,
+        "nlp_score": 0.1778,
+        "inference_ms": 57.5
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 8.9,
+        "risk_band": "Low",
+        "evidence_strength": 0.598,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 1.0,
+          "eff_v": 0.3,
+          "S_n": 0.1778,
+          "conf_n": 0.9311,
+          "reliability_n": 0.8,
+          "eff_n": 0.298,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0021",
+      "simulated": true,
+      "created_at": "2026-09-30T07:42:28+05:30",
+      "pairing": "image_only",
+      "location": {
+        "name": "KK Nagar",
+        "district": "Chennai",
+        "lat": 13.04378,
+        "lon": 80.20131
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0021.jpg",
+        "source": "cctv",
+        "dataset_file": "test/images/01282_jpg.rf.b8702fdcff422f70d953e6d8384b3db0.jpg"
+      },
+      "text": null,
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "cctv",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0021.jpg",
+        "inference_ms": 107.5
+      },
+      "nlp": null,
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 0.0,
+        "risk_band": "Low",
+        "evidence_strength": 0.255,
+        "evidence_level": "Weak",
+        "conflict": false,
+        "single_source": true,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 0.85,
+          "eff_v": 0.255,
+          "S_n": null,
+          "conf_n": null,
+          "reliability_n": null,
+          "eff_n": 0.0,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0022",
+      "simulated": true,
+      "created_at": "2026-09-30T07:47:16+05:30",
+      "pairing": "text_only",
+      "location": {
+        "name": "Saidapet",
+        "district": "Chennai",
+        "lat": 13.02078,
+        "lon": 80.21827
+      },
+      "image": null,
+      "text": {
+        "content": "Sprawl development in Howard County is making flooding much worse in places like Ellicott City. Also, sprawl zoning prohibits new Ellicott Cities from being made, no matter how loved they are. Howard Countys sprawl-only zoning may kill Ellicott City for good.",
+        "source": "control_room_call",
+        "humaid_label": "other_relevant_information",
+        "event": "maryland_floods_2018"
+      },
+      "vision": null,
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "Low",
+        "probabilities": {
+          "Low": 0.8654,
+          "Medium": 0.1263,
+          "High": 0.0084
+        },
+        "confidence": 0.8654,
+        "nlp_score": 0.2005,
+        "inference_ms": 58.4
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 20.1,
+        "risk_band": "Low",
+        "evidence_strength": 0.277,
+        "evidence_level": "Weak",
+        "conflict": false,
+        "single_source": true,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": null,
+          "conf_v": null,
+          "reliability_v": null,
+          "eff_v": 0.0,
+          "S_n": 0.2005,
+          "conf_n": 0.8654,
+          "reliability_n": 0.8,
+          "eff_n": 0.2769,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0023",
+      "simulated": true,
+      "created_at": "2026-09-30T07:47:32+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Kotturpuram",
+        "district": "Chennai",
+        "lat": 13.01992,
+        "lon": 80.24006
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0023.jpg",
+        "source": "cctv",
+        "dataset_file": "test/images/b00161_jpg.rf.e2eb44c06f9e0ab25042d21dd04692b7.jpg"
+      },
+      "text": {
+        "content": "Message from Alappuzha Collector. They need around 20,000 kits (details in image). Via @USER Please contribute #KeralaFloodRelief #KeralaFloods #KeralaSOS @USER @USER @USER @USER",
+        "source": "control_room_call",
+        "humaid_label": "requests_or_urgent_needs",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "cctv",
+        "detections": [
+          {
+            "class_name": "vehicle",
+            "confidence": 0.7128,
+            "bbox": {
+              "x1": 440,
+              "y1": 112,
+              "x2": 505,
+              "y2": 167
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.6355,
+            "bbox": {
+              "x1": 418,
+              "y1": 247,
+              "x2": 461,
+              "y2": 295
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.4853,
+            "bbox": {
+              "x1": 550,
+              "y1": 222,
+              "x2": 594,
+              "y2": 299
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.4746,
+            "bbox": {
+              "x1": 24,
+              "y1": 120,
+              "x2": 89,
+              "y2": 161
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.4463,
+            "bbox": {
+              "x1": 155,
+              "y1": 123,
+              "x2": 202,
+              "y2": 160
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.3826,
+            "bbox": {
+              "x1": 0,
+              "y1": 110,
+              "x2": 28,
+              "y2": 159
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.3686,
+            "bbox": {
+              "x1": 174,
+              "y1": 241,
+              "x2": 240,
+              "y2": 309
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.3011,
+            "bbox": {
+              "x1": 439,
+              "y1": 109,
+              "x2": 505,
+              "y2": 167
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.2737,
+            "bbox": {
+              "x1": 86,
+              "y1": 108,
+              "x2": 160,
+              "y2": 158
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.2631,
+            "bbox": {
+              "x1": 659,
+              "y1": 131,
+              "x2": 740,
+              "y2": 166
+            }
+          }
+        ],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 3,
+          "vehicle": 7
+        },
+        "vision_score": 0.7013,
+        "vision_confidence": 0.7128,
+        "severity_band": "High",
+        "annotated_image_url": "/static/incidents/SIM-0023.jpg",
+        "inference_ms": 111.9
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "High",
+        "probabilities": {
+          "Low": 0.0158,
+          "Medium": 0.0929,
+          "High": 0.8913
+        },
+        "confidence": 0.8913,
+        "nlp_score": 0.851,
+        "inference_ms": 61.5
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 76.7,
+        "risk_band": "Critical",
+        "evidence_strength": 0.649,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "person",
+        "suggested_action": "Evacuate to nearest relief camp; send boat if access is cut",
+        "breakdown": {
+          "S_v": 0.7013,
+          "conf_v": 0.7128,
+          "reliability_v": 0.85,
+          "eff_v": 0.3635,
+          "S_n": 0.851,
+          "conf_n": 0.8913,
+          "reliability_n": 0.8,
+          "eff_n": 0.2852,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0024",
+      "simulated": true,
+      "created_at": "2026-09-30T08:14:05+05:30",
+      "pairing": "random",
+      "location": {
+        "name": "KK Nagar",
+        "district": "Chennai",
+        "lat": 13.03964,
+        "lon": 80.20437
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0024.jpg",
+        "source": "cctv",
+        "dataset_file": "test/images/yt-GjxIno9rO4A-0049_jpg.rf.54e214348c06be0f0dc821b01f1d7005.jpg"
+      },
+      "text": {
+        "content": "Our thoughts and prayers are with those affected by the devastating floods in Nebraska. Nebraska Farm Bureau estimates $1 Billion in losses for the livestock industry. We are heartbroken as this threatens cattle producers, families and most of all, their communities.",
+        "source": "control_room_call",
+        "humaid_label": "sympathy_and_support",
+        "event": "midwestern_us_floods_2019"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "cctv",
+        "detections": [
+          {
+            "class_name": "person",
+            "confidence": 0.2809,
+            "bbox": {
+              "x1": 104,
+              "y1": 136,
+              "x2": 126,
+              "y2": 207
+            }
+          }
+        ],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 1,
+          "vehicle": 0
+        },
+        "vision_score": 0.1264,
+        "vision_confidence": 0.2809,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0024.jpg",
+        "inference_ms": 126.8
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "Low",
+        "probabilities": {
+          "Low": 0.9849,
+          "Medium": 0.0087,
+          "High": 0.0063
+        },
+        "confidence": 0.9849,
+        "nlp_score": 0.1578,
+        "inference_ms": 47.3
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 14.8,
+        "risk_band": "Low",
+        "evidence_strength": 0.458,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "person",
+        "suggested_action": "Monitor",
+        "breakdown": {
+          "S_v": 0.1264,
+          "conf_v": 0.2809,
+          "reliability_v": 0.85,
+          "eff_v": 0.1433,
+          "S_n": 0.1578,
+          "conf_n": 0.9849,
+          "reliability_n": 0.8,
+          "eff_n": 0.3152,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0025",
+      "simulated": true,
+      "created_at": "2026-09-30T08:16:59+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Saidapet",
+        "district": "Chennai",
+        "lat": 13.01901,
+        "lon": 80.22061
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0025.jpg",
+        "source": "officer_photo",
+        "dataset_file": "test/images/d01001_jpg.rf.44c1c03b64ea2fda9af42613a7f8367b.jpg"
+      },
+      "text": {
+        "content": "#Kerala #Flood Relief Donation Drive",
+        "source": "officer_report",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "officer_photo",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0025.jpg",
+        "inference_ms": 132.0
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "officer_report",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.018,
+          "Medium": 0.967,
+          "High": 0.015
+        },
+        "confidence": 0.967,
+        "nlp_score": 0.4997,
+        "inference_ms": 35.0
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 28.1,
+        "risk_band": "Low",
+        "evidence_strength": 0.687,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 1.0,
+          "eff_v": 0.3,
+          "S_n": 0.4997,
+          "conf_n": 0.967,
+          "reliability_n": 1.0,
+          "eff_n": 0.3868,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0026",
+      "simulated": true,
+      "created_at": "2026-09-30T08:23:58+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Pallikaranai",
+        "district": "Chengalpattu",
+        "lat": 12.94003,
+        "lon": 80.21841
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0026.jpg",
+        "source": "citizen_upload",
+        "dataset_file": "test/images/d01461_jpg.rf.8126018d8f5ad537c8cb7d800249058a.jpg"
+      },
+      "text": {
+        "content": "Welcome #USSLakeErie to #SriLanka for #FloodSL humanitarian assistance. @USER @USER",
+        "source": "officer_report",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "srilanka_floods_2017"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "citizen_upload",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0026.jpg",
+        "inference_ms": 152.4
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "officer_report",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.2746,
+          "Medium": 0.5884,
+          "High": 0.137
+        },
+        "confidence": 0.5884,
+        "nlp_score": 0.4587,
+        "inference_ms": 56.9
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 26.0,
+        "risk_band": "Low",
+        "evidence_strength": 0.415,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 0.6,
+          "eff_v": 0.18,
+          "S_n": 0.4587,
+          "conf_n": 0.5884,
+          "reliability_n": 1.0,
+          "eff_n": 0.2354,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0027",
+      "simulated": true,
+      "created_at": "2026-09-30T08:28:16+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Manali",
+        "district": "Chennai",
+        "lat": 13.16654,
+        "lon": 80.26895
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0027.jpg",
+        "source": "citizen_upload",
+        "dataset_file": "test/images/yt-GjxIno9rO4A-0059_jpg.rf.2777cb9ae98511c727178147d055ae30.jpg"
+      },
+      "text": {
+        "content": "Female Injured After Grease Fire in Lexington Park | Southern Maryland News Net",
+        "source": "citizen_sms",
+        "humaid_label": "injured_or_dead_people",
+        "event": "maryland_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "citizen_upload",
+        "detections": [
+          {
+            "class_name": "vehicle",
+            "confidence": 0.4944,
+            "bbox": {
+              "x1": 25,
+              "y1": 516,
+              "x2": 157,
+              "y2": 625
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.4199,
+            "bbox": {
+              "x1": 340,
+              "y1": 232,
+              "x2": 356,
+              "y2": 249
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.4121,
+            "bbox": {
+              "x1": 128,
+              "y1": 405,
+              "x2": 203,
+              "y2": 495
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.3969,
+            "bbox": {
+              "x1": 236,
+              "y1": 317,
+              "x2": 291,
+              "y2": 372
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.3638,
+            "bbox": {
+              "x1": 55,
+              "y1": 377,
+              "x2": 146,
+              "y2": 468
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.336,
+            "bbox": {
+              "x1": 236,
+              "y1": 317,
+              "x2": 291,
+              "y2": 372
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.2836,
+            "bbox": {
+              "x1": 128,
+              "y1": 406,
+              "x2": 202,
+              "y2": 496
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.2513,
+            "bbox": {
+              "x1": 55,
+              "y1": 378,
+              "x2": 162,
+              "y2": 468
+            }
+          }
+        ],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 8
+        },
+        "vision_score": 0.3668,
+        "vision_confidence": 0.4944,
+        "severity_band": "Moderate",
+        "annotated_image_url": "/static/incidents/SIM-0027.jpg",
+        "inference_ms": 201.1
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "citizen_sms",
+        "urgency": "High",
+        "probabilities": {
+          "Low": 0.0063,
+          "Medium": 0.0103,
+          "High": 0.9834
+        },
+        "confidence": 0.9834,
+        "nlp_score": 0.8912,
+        "inference_ms": 48.3
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 66.6,
+        "risk_band": "High",
+        "evidence_strength": 0.414,
+        "evidence_level": "Fair",
+        "conflict": true,
+        "single_source": false,
+        "dominant_class": "vehicle",
+        "suggested_action": "Close road and divert traffic. Signals disagree: verify on ground before committing resources.",
+        "breakdown": {
+          "S_v": 0.3668,
+          "conf_v": 0.4944,
+          "reliability_v": 0.6,
+          "eff_v": 0.178,
+          "S_n": 0.8912,
+          "conf_n": 0.9834,
+          "reliability_n": 0.6,
+          "eff_n": 0.236,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0028",
+      "simulated": true,
+      "created_at": "2026-09-30T08:46:12+05:30",
+      "pairing": "image_only",
+      "location": {
+        "name": "Perungudi",
+        "district": "Chennai",
+        "lat": 12.97021,
+        "lon": 80.24943
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0028.jpg",
+        "source": "officer_photo",
+        "dataset_file": "test/images/c00121_jpg.rf.d727a0f97e1c86458977a2869dc4cc6c.jpg"
+      },
+      "text": null,
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "officer_photo",
+        "detections": [
+          {
+            "class_name": "person",
+            "confidence": 0.788,
+            "bbox": {
+              "x1": 350,
+              "y1": 234,
+              "x2": 496,
+              "y2": 356
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.2882,
+            "bbox": {
+              "x1": 525,
+              "y1": 135,
+              "x2": 586,
+              "y2": 168
+            }
+          }
+        ],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 1,
+          "vehicle": 1
+        },
+        "vision_score": 0.3825,
+        "vision_confidence": 0.788,
+        "severity_band": "Moderate",
+        "annotated_image_url": "/static/incidents/SIM-0028.jpg",
+        "inference_ms": 135.4
+      },
+      "nlp": null,
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 38.3,
+        "risk_band": "Moderate",
+        "evidence_strength": 0.473,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": true,
+        "dominant_class": "person",
+        "suggested_action": "Field officer check; alert relief camp",
+        "breakdown": {
+          "S_v": 0.3825,
+          "conf_v": 0.788,
+          "reliability_v": 1.0,
+          "eff_v": 0.4728,
+          "S_n": null,
+          "conf_n": null,
+          "reliability_n": null,
+          "eff_n": 0.0,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0029",
+      "simulated": true,
+      "created_at": "2026-09-30T08:50:27+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Adyar",
+        "district": "Chennai",
+        "lat": 12.99799,
+        "lon": 80.25164
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0029.jpg",
+        "source": "cctv",
+        "dataset_file": "test/images/yt-GjxIno9rO4A-0070_jpg.rf.8baa9686b0b9d06a085a54e2deb4a206.jpg"
+      },
+      "text": {
+        "content": "Megastar #Chiranjeevi &amp; Family have announced donations for #KeralaFloodRelief #MegastarChiranjeevi - Rs 25 Lakh MegaPower Srar #RamCharan - Rs 25 Lakh @USER - Rs 10 Lakh worth medicines #Chiranjeevis mother #AnjanaDevi - Rs 1 Lakh",
+        "source": "control_room_call",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "cctv",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0029.jpg",
+        "inference_ms": 143.3
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.0195,
+          "Medium": 0.968,
+          "High": 0.0126
+        },
+        "confidence": 0.968,
+        "nlp_score": 0.4983,
+        "inference_ms": 68.6
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 27.3,
+        "risk_band": "Low",
+        "evidence_strength": 0.565,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 0.85,
+          "eff_v": 0.255,
+          "S_n": 0.4983,
+          "conf_n": 0.968,
+          "reliability_n": 0.8,
+          "eff_n": 0.3098,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0030",
+      "simulated": true,
+      "created_at": "2026-09-30T09:06:48+05:30",
+      "pairing": "random",
+      "location": {
+        "name": "Velachery",
+        "district": "Chennai",
+        "lat": 12.98203,
+        "lon": 80.21997
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0030.jpg",
+        "source": "officer_photo",
+        "dataset_file": "test/images/c01261_jpg.rf.e95cc26c0a5f4555c44834e92feebd27.jpg"
+      },
+      "text": {
+        "content": "#KeralaFloods: High alert has been issued in all districts except Kasaragod, asking people to be extra vigilant as Leptospirosis has taken away 43 lives post the floods that ravaged the State.",
+        "source": "social_media",
+        "humaid_label": "other_relevant_information",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "officer_photo",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0030.jpg",
+        "inference_ms": 132.7
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "social_media",
+        "urgency": "High",
+        "probabilities": {
+          "Low": 0.0811,
+          "Medium": 0.3811,
+          "High": 0.5378
+        },
+        "confidence": 0.5378,
+        "nlp_score": 0.6867,
+        "inference_ms": 70.8
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 18.1,
+        "risk_band": "Low",
+        "evidence_strength": 0.408,
+        "evidence_level": "Fair",
+        "conflict": true,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log. Signals disagree: verify on ground before committing resources.",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 1.0,
+          "eff_v": 0.3,
+          "S_n": 0.6867,
+          "conf_n": 0.5378,
+          "reliability_n": 0.5,
+          "eff_n": 0.1076,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0031",
+      "simulated": true,
+      "created_at": "2026-09-30T09:15:54+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Saidapet",
+        "district": "Chennai",
+        "lat": 13.01733,
+        "lon": 80.21822
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0031.jpg",
+        "source": "officer_photo",
+        "dataset_file": "test/images/yt-GjxIno9rO4A-0048_jpg.rf.990f28614a4bbb740aed827bd383ff08.jpg"
+      },
+      "text": {
+        "content": "tonnes of food , millions of liters of water, many kiloliters of milk , a 100 million tonnes of pulses ,52Million tonnes of medicine from #India for #Indians suffering in #KeralaFloods negated by one box of clothes from #Pakistan , a new record for being retarded by @USER !",
+        "source": "control_room_call",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "officer_photo",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0031.jpg",
+        "inference_ms": 109.8
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.0504,
+          "Medium": 0.6952,
+          "High": 0.2544
+        },
+        "confidence": 0.6952,
+        "nlp_score": 0.5841,
+        "inference_ms": 68.7
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 24.9,
+        "risk_band": "Low",
+        "evidence_strength": 0.522,
+        "evidence_level": "Fair",
+        "conflict": true,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log. Signals disagree: verify on ground before committing resources.",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 1.0,
+          "eff_v": 0.3,
+          "S_n": 0.5841,
+          "conf_n": 0.6952,
+          "reliability_n": 0.8,
+          "eff_n": 0.2225,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0032",
+      "simulated": true,
+      "created_at": "2026-09-30T09:31:56+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Adyar",
+        "district": "Chennai",
+        "lat": 12.99804,
+        "lon": 80.25201
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0032.jpg",
+        "source": "citizen_upload",
+        "dataset_file": "test/images/01208_jpg.rf.ac8784037cc044e3e8e85e74b121b542.jpg"
+      },
+      "text": {
+        "content": "We feel that we can cope with situation on our own &amp; we will take help if needed” said PM Manmohan Singh during 2004 Tsunami.GoI refused foreign aid while giving cheques of $25 million to Sri Lanka, $1 million to Indonesia and $500,000 to Thailand.INC media panellist hain ye ὤ4",
+        "source": "control_room_call",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "citizen_upload",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0032.jpg",
+        "inference_ms": 105.1
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "Low",
+        "probabilities": {
+          "Low": 0.877,
+          "Medium": 0.0978,
+          "High": 0.0252
+        },
+        "confidence": 0.877,
+        "nlp_score": 0.2031,
+        "inference_ms": 57.5
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 12.4,
+        "risk_band": "Low",
+        "evidence_strength": 0.461,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 0.6,
+          "eff_v": 0.18,
+          "S_n": 0.2031,
+          "conf_n": 0.877,
+          "reliability_n": 0.8,
+          "eff_n": 0.2806,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0033",
+      "simulated": true,
+      "created_at": "2026-09-30T09:36:20+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Pallikaranai",
+        "district": "Chengalpattu",
+        "lat": 12.93661,
+        "lon": 80.20964
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0033.jpg",
+        "source": "cctv",
+        "dataset_file": "test/images/c00781_jpg.rf.74f5ab2d9af7cd336fe6ddceda0458c9.jpg"
+      },
+      "text": {
+        "content": "All #kerala @USER Allu Arjun fans donate #KeralaFloodRelief #KeralaReliefFund #KeralaFloods",
+        "source": "officer_report",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "cctv",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0033.jpg",
+        "inference_ms": 105.4
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "officer_report",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.0203,
+          "Medium": 0.9648,
+          "High": 0.0149
+        },
+        "confidence": 0.9648,
+        "nlp_score": 0.4989,
+        "inference_ms": 47.8
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 30.0,
+        "risk_band": "Low",
+        "evidence_strength": 0.641,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 0.85,
+          "eff_v": 0.255,
+          "S_n": 0.4989,
+          "conf_n": 0.9648,
+          "reliability_n": 1.0,
+          "eff_n": 0.3859,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0034",
+      "simulated": true,
+      "created_at": "2026-09-30T10:00:12+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Tambaram",
+        "district": "Chengalpattu",
+        "lat": 12.92801,
+        "lon": 80.10449
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0034.jpg",
+        "source": "officer_photo",
+        "dataset_file": "test/images/c00381_jpg.rf.9d7c4cb0fa0fc9e23e0b11709bd0e119.jpg"
+      },
+      "text": {
+        "content": "Please guys donate for Kerala ὤFἿC Kerala need help ὤFἿC #KeralaFloods #DonateForKerala #KeralaFloodRelief",
+        "source": "officer_report",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "officer_photo",
+        "detections": [
+          {
+            "class_name": "person",
+            "confidence": 0.4034,
+            "bbox": {
+              "x1": 400,
+              "y1": 281,
+              "x2": 444,
+              "y2": 352
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.3056,
+            "bbox": {
+              "x1": 380,
+              "y1": 257,
+              "x2": 415,
+              "y2": 318
+            }
+          }
+        ],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 2,
+          "vehicle": 0
+        },
+        "vision_score": 0.2941,
+        "vision_confidence": 0.4034,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0034.jpg",
+        "inference_ms": 117.2
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "officer_report",
+        "urgency": "High",
+        "probabilities": {
+          "Low": 0.0132,
+          "Medium": 0.1391,
+          "High": 0.8477
+        },
+        "confidence": 0.8477,
+        "nlp_score": 0.8345,
+        "inference_ms": 58.4
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 60.9,
+        "risk_band": "High",
+        "evidence_strength": 0.581,
+        "evidence_level": "Fair",
+        "conflict": true,
+        "single_source": false,
+        "dominant_class": "person",
+        "suggested_action": "Organise evacuation; send relief supplies. Signals disagree: verify on ground before committing resources.",
+        "breakdown": {
+          "S_v": 0.2941,
+          "conf_v": 0.4034,
+          "reliability_v": 1.0,
+          "eff_v": 0.242,
+          "S_n": 0.8345,
+          "conf_n": 0.8477,
+          "reliability_n": 1.0,
+          "eff_n": 0.3391,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0035",
+      "simulated": true,
+      "created_at": "2026-09-30T10:01:19+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "KK Nagar",
+        "district": "Chennai",
+        "lat": 13.04384,
+        "lon": 80.20046
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0035.jpg",
+        "source": "citizen_upload",
+        "dataset_file": "test/images/01070_jpg.rf.b6dee1bf595fcbf84022db4e8980a16a.jpg"
+      },
+      "text": {
+        "content": "Years ago when J&amp;K was flooded, Indian media ignored to report on Assam floods, except in the year approaching elections in the latter. Now, although Kerala flood was reported, Nagaland flood not! Media bias or misrepresentation of the Northeast India isnt new! #floods #SaveNaga",
+        "source": "officer_report",
+        "humaid_label": "not_humanitarian",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "citizen_upload",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0035.jpg",
+        "inference_ms": 101.5
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "officer_report",
+        "urgency": "Low",
+        "probabilities": {
+          "Low": 0.9753,
+          "Medium": 0.0212,
+          "High": 0.0035
+        },
+        "confidence": 0.9753,
+        "nlp_score": 0.16,
+        "inference_ms": 59.1
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 11.0,
+        "risk_band": "Low",
+        "evidence_strength": 0.57,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 0.6,
+          "eff_v": 0.18,
+          "S_n": 0.16,
+          "conf_n": 0.9753,
+          "reliability_n": 1.0,
+          "eff_n": 0.3901,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0036",
+      "simulated": true,
+      "created_at": "2026-09-30T10:18:35+05:30",
+      "pairing": "text_only",
+      "location": {
+        "name": "KK Nagar",
+        "district": "Chennai",
+        "lat": 13.04,
+        "lon": 80.20349
+      },
+      "image": null,
+      "text": {
+        "content": "Mukund (91 9995907052) has some basic medical supplies and other essentials with him. Contact him to get help in and around #Cochin #Kochi #KeralaFloods",
+        "source": "control_room_call",
+        "humaid_label": "sympathy_and_support",
+        "event": "kerala_floods_2018"
+      },
+      "vision": null,
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "High",
+        "probabilities": {
+          "Low": 0.0137,
+          "Medium": 0.1726,
+          "High": 0.8136
+        },
+        "confidence": 0.8136,
+        "nlp_score": 0.8206,
+        "inference_ms": 51.0
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 82.1,
+        "risk_band": "Critical",
+        "evidence_strength": 0.26,
+        "evidence_level": "Weak",
+        "conflict": false,
+        "single_source": true,
+        "dominant_class": "text_only",
+        "suggested_action": "Call back reporter; dispatch verification team now",
+        "breakdown": {
+          "S_v": null,
+          "conf_v": null,
+          "reliability_v": null,
+          "eff_v": 0.0,
+          "S_n": 0.8206,
+          "conf_n": 0.8136,
+          "reliability_n": 0.8,
+          "eff_n": 0.2604,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0037",
+      "simulated": true,
+      "created_at": "2026-09-30T10:30:11+05:30",
+      "pairing": "random",
+      "location": {
+        "name": "Mylapore",
+        "district": "Chennai",
+        "lat": 13.0388,
+        "lon": 80.25995
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0037.jpg",
+        "source": "cctv",
+        "dataset_file": "test/images/01159_jpg.rf.c842e05fc95d65ee94b66a107d4995e3.jpg"
+      },
+      "text": {
+        "content": "Visited the Milleniya DS in Kalutara with donations we received from our friends. #lka #SriLanka #FloodSL #flood2017 #HelpSriLanka #DMC",
+        "source": "citizen_sms",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "srilanka_floods_2017"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "cctv",
+        "detections": [],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 0
+        },
+        "vision_score": 0.0,
+        "vision_confidence": 0.5,
+        "severity_band": "Low",
+        "annotated_image_url": "/static/incidents/SIM-0037.jpg",
+        "inference_ms": 116.3
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "citizen_sms",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.0403,
+          "Medium": 0.9439,
+          "High": 0.0158
+        },
+        "confidence": 0.9439,
+        "nlp_score": 0.4922,
+        "inference_ms": 43.6
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 23.2,
+        "risk_band": "Low",
+        "evidence_strength": 0.482,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "text_only",
+        "suggested_action": "Log",
+        "breakdown": {
+          "S_v": 0.0,
+          "conf_v": 0.5,
+          "reliability_v": 0.85,
+          "eff_v": 0.255,
+          "S_n": 0.4922,
+          "conf_n": 0.9439,
+          "reliability_n": 0.6,
+          "eff_n": 0.2265,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0038",
+      "simulated": true,
+      "created_at": "2026-09-30T10:31:14+05:30",
+      "pairing": "random",
+      "location": {
+        "name": "Manali",
+        "district": "Chennai",
+        "lat": 13.16269,
+        "lon": 80.26933
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0038.jpg",
+        "source": "cctv",
+        "dataset_file": "test/images/yt-wPFX79UM5OA-0001_jpg.rf.224638028571d6ba9843229dff7bee6c.jpg"
+      },
+      "text": {
+        "content": "Help us provide aid to victims of Kerala floods. Make a small donation. #KeralaFloodsRelief #KeralaFloods /",
+        "source": "control_room_call",
+        "humaid_label": "requests_or_urgent_needs",
+        "event": "kerala_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "cctv",
+        "detections": [
+          {
+            "class_name": "vehicle",
+            "confidence": 0.6545,
+            "bbox": {
+              "x1": 506,
+              "y1": 224,
+              "x2": 615,
+              "y2": 262
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.4601,
+            "bbox": {
+              "x1": 382,
+              "y1": 261,
+              "x2": 466,
+              "y2": 300
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.399,
+            "bbox": {
+              "x1": 66,
+              "y1": 195,
+              "x2": 93,
+              "y2": 257
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.3656,
+            "bbox": {
+              "x1": 252,
+              "y1": 137,
+              "x2": 284,
+              "y2": 214
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.3132,
+            "bbox": {
+              "x1": 283,
+              "y1": 163,
+              "x2": 325,
+              "y2": 234
+            }
+          }
+        ],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 3,
+          "vehicle": 2
+        },
+        "vision_score": 0.5056,
+        "vision_confidence": 0.6545,
+        "severity_band": "Moderate",
+        "annotated_image_url": "/static/incidents/SIM-0038.jpg",
+        "inference_ms": 125.1
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.0313,
+          "Medium": 0.86,
+          "High": 0.1087
+        },
+        "confidence": 0.86,
+        "nlp_score": 0.5325,
+        "inference_ms": 53.6
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 51.8,
+        "risk_band": "Moderate",
+        "evidence_strength": 0.609,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "person",
+        "suggested_action": "Field officer check; alert relief camp",
+        "breakdown": {
+          "S_v": 0.5056,
+          "conf_v": 0.6545,
+          "reliability_v": 0.85,
+          "eff_v": 0.3338,
+          "S_n": 0.5325,
+          "conf_n": 0.86,
+          "reliability_n": 0.8,
+          "eff_n": 0.2752,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0039",
+      "simulated": true,
+      "created_at": "2026-09-30T10:31:19+05:30",
+      "pairing": "random",
+      "location": {
+        "name": "Pallikaranai",
+        "district": "Chengalpattu",
+        "lat": 12.93417,
+        "lon": 80.21064
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0039.jpg",
+        "source": "officer_photo",
+        "dataset_file": "test/images/yt-GjxIno9rO4A-0059_jpg.rf.7989bd1eea43f2f0f4ebcc72961f1a1b.jpg"
+      },
+      "text": {
+        "content": "Government of Maldives donated A cheque of US $ 25,000.00 to Sri Lanka #FloodReliefLKA #floodSL #lka @USER",
+        "source": "officer_report",
+        "humaid_label": "rescue_volunteering_or_donation_effort",
+        "event": "srilanka_floods_2017"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "officer_photo",
+        "detections": [
+          {
+            "class_name": "vehicle",
+            "confidence": 0.8012,
+            "bbox": {
+              "x1": 777,
+              "y1": 465,
+              "x2": 840,
+              "y2": 569
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.6891,
+            "bbox": {
+              "x1": 599,
+              "y1": 405,
+              "x2": 663,
+              "y2": 490
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.6608,
+            "bbox": {
+              "x1": 649,
+              "y1": 381,
+              "x2": 734,
+              "y2": 464
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.6157,
+            "bbox": {
+              "x1": 526,
+              "y1": 315,
+              "x2": 576,
+              "y2": 366
+            }
+          },
+          {
+            "class_name": "vehicle",
+            "confidence": 0.6048,
+            "bbox": {
+              "x1": 630,
+              "y1": 512,
+              "x2": 764,
+              "y2": 639
+            }
+          }
+        ],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 0,
+          "vehicle": 5
+        },
+        "vision_score": 0.4135,
+        "vision_confidence": 0.8012,
+        "severity_band": "Moderate",
+        "annotated_image_url": "/static/incidents/SIM-0039.jpg",
+        "inference_ms": 119.2
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "officer_report",
+        "urgency": "Medium",
+        "probabilities": {
+          "Low": 0.0221,
+          "Medium": 0.9669,
+          "High": 0.011
+        },
+        "confidence": 0.9669,
+        "nlp_score": 0.4967,
+        "inference_ms": 47.3
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 45.1,
+        "risk_band": "Moderate",
+        "evidence_strength": 0.867,
+        "evidence_level": "Strong",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "vehicle",
+        "suggested_action": "Issue traffic advisory",
+        "breakdown": {
+          "S_v": 0.4135,
+          "conf_v": 0.8012,
+          "reliability_v": 1.0,
+          "eff_v": 0.4807,
+          "S_n": 0.4967,
+          "conf_n": 0.9669,
+          "reliability_n": 1.0,
+          "eff_n": 0.3868,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    },
+    {
+      "id": "SIM-0040",
+      "simulated": true,
+      "created_at": "2026-09-30T10:35:27+05:30",
+      "pairing": "concordant",
+      "location": {
+        "name": "Saidapet",
+        "district": "Chennai",
+        "lat": 13.02319,
+        "lon": 80.2228
+      },
+      "image": {
+        "url": "/static/incidents/SIM-0040.jpg",
+        "source": "officer_photo",
+        "dataset_file": "test/images/scene00871_png.rf.9e224fb4e49ea4a073dcdbd8c75e4cc5.jpg"
+      },
+      "text": {
+        "content": "Heavy flooding in Maryland leaves one missing and extensive damage",
+        "source": "control_room_call",
+        "humaid_label": "missing_or_found_people",
+        "event": "maryland_floods_2018"
+      },
+      "vision": {
+        "data_origin": "model",
+        "model": {
+          "name": "yolov8n-coco-pretrained",
+          "trained_at": null,
+          "fine_tuned": false,
+          "checkpoint": "backend/yolov8n.pt"
+        },
+        "source": "officer_photo",
+        "detections": [
+          {
+            "class_name": "person",
+            "confidence": 0.5547,
+            "bbox": {
+              "x1": 403,
+              "y1": 216,
+              "x2": 461,
+              "y2": 318
+            }
+          },
+          {
+            "class_name": "person",
+            "confidence": 0.3075,
+            "bbox": {
+              "x1": 329,
+              "y1": 224,
+              "x2": 401,
+              "y2": 337
+            }
+          }
+        ],
+        "counts": {
+          "person_in_water": 0,
+          "person_in_vehicle": 0,
+          "person": 2,
+          "vehicle": 0
+        },
+        "vision_score": 0.3534,
+        "vision_confidence": 0.5547,
+        "severity_band": "Moderate",
+        "annotated_image_url": "/static/incidents/SIM-0040.jpg",
+        "inference_ms": 108.7
+      },
+      "nlp": {
+        "data_origin": "model",
+        "model": {
+          "name": "mdris-distilbert-urgency",
+          "trained_at": "2026-09-29T22:50:33+05:30",
+          "fine_tuned": true,
+          "path": "models/nlp"
+        },
+        "source": "control_room_call",
+        "urgency": "High",
+        "probabilities": {
+          "Low": 0.0224,
+          "Medium": 0.1409,
+          "High": 0.8366
+        },
+        "confidence": 0.8366,
+        "nlp_score": 0.8268,
+        "inference_ms": 33.9
+      },
+      "fusion": {
+        "data_origin": "model",
+        "priority_score": 56.4,
+        "risk_band": "High",
+        "evidence_strength": 0.601,
+        "evidence_level": "Fair",
+        "conflict": false,
+        "single_source": false,
+        "dominant_class": "person",
+        "suggested_action": "Organise evacuation; send relief supplies",
+        "breakdown": {
+          "S_v": 0.3534,
+          "conf_v": 0.5547,
+          "reliability_v": 1.0,
+          "eff_v": 0.3328,
+          "S_n": 0.8268,
+          "conf_n": 0.8366,
+          "reliability_n": 0.8,
+          "eff_n": 0.2677,
+          "weights": {
+            "vision": 0.6,
+            "nlp": 0.4
+          }
+        }
+      }
+    }
+  ]
+}

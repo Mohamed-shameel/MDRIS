@@ -1,0 +1,113 @@
+{
+  "generated_at": "2026-09-30T10:46:13+05:30",
+  "n_incidents": 40,
+  "incidents_generated_at": "2026-09-30T10:46:09+05:30",
+  "default": {
+    "band_counts": {
+      "Critical": 2,
+      "High": 5,
+      "Moderate": 9,
+      "Low": 24
+    },
+    "top10_ids": [
+      "SIM-0036",
+      "SIM-0023",
+      "SIM-0003",
+      "SIM-0019",
+      "SIM-0027",
+      "SIM-0034",
+      "SIM-0040",
+      "SIM-0038",
+      "SIM-0014",
+      "SIM-0007"
+    ]
+  },
+  "ablation": [
+    {
+      "variant": "(a) flat mean",
+      "description": "100 x mean of S_v and S_n present; no confidence, reliability or modality weights",
+      "band_changes": 0,
+      "kendall_tau": 0.8647,
+      "kendall_tau_top10": 0.9556,
+      "mean_score_shift": -0.5
+    },
+    {
+      "variant": "(b) no reliability",
+      "description": "all source reliabilities set to 1.0",
+      "band_changes": 0,
+      "kendall_tau": 0.8977,
+      "kendall_tau_top10": 0.9556,
+      "mean_score_shift": 0.22
+    },
+    {
+      "variant": "(c) no renormalization",
+      "description": "missing modality counted as S = 0 with its full modality weight",
+      "band_changes": 6,
+      "kendall_tau": 0.6637,
+      "kendall_tau_top10": 0.6,
+      "mean_score_shift": -6.37
+    },
+    {
+      "variant": "(d) weather at 30%",
+      "description": "0.7 x priority + 30 x W, constant city reading {'rainfall_mm': 42.0, 'wind_kmh': 55.0, 'humidity': 90.0} -> W = 0.65",
+      "band_changes": 13,
+      "kendall_tau": 1.0,
+      "kendall_tau_top10": 1.0,
+      "mean_score_shift": 9.52
+    }
+  ],
+  "sensitivity": {
+    "vision_weight": [
+      {
+        "setting": "VISION_WEIGHT=0.4, NLP_WEIGHT=0.6",
+        "kendall_tau_top10": 0.8222,
+        "kendall_tau_all": 0.9025,
+        "band_changes": 9
+      },
+      {
+        "setting": "VISION_WEIGHT=0.5, NLP_WEIGHT=0.5",
+        "kendall_tau_top10": 0.9111,
+        "kendall_tau_all": 0.9497,
+        "band_changes": 1
+      },
+      {
+        "setting": "VISION_WEIGHT=0.6, NLP_WEIGHT=0.4",
+        "kendall_tau_top10": 1.0,
+        "kendall_tau_all": 1.0,
+        "band_changes": 0
+      },
+      {
+        "setting": "VISION_WEIGHT=0.7, NLP_WEIGHT=0.3",
+        "kendall_tau_top10": 0.7641,
+        "kendall_tau_all": 0.9535,
+        "band_changes": 3
+      },
+      {
+        "setting": "VISION_WEIGHT=0.8, NLP_WEIGHT=0.2",
+        "kendall_tau_top10": 0.4667,
+        "kendall_tau_all": 0.9008,
+        "band_changes": 6
+      }
+    ],
+    "reliability_scale": [
+      {
+        "setting": "reliabilities x0.8 (capped at 1.0)",
+        "kendall_tau_top10": 1.0,
+        "kendall_tau_all": 1.0,
+        "band_changes": 0
+      },
+      {
+        "setting": "reliabilities x1.2 (capped at 1.0)",
+        "kendall_tau_top10": 1.0,
+        "kendall_tau_all": 0.9729,
+        "band_changes": 0
+      }
+    ]
+  },
+  "notes": [
+    "No ground-truth priority exists; these numbers describe behaviour and stability, not accuracy.",
+    "Kendall tau is tau-b (ties handled) between the variant's and the full rule's priority scores.",
+    "Scaling every reliability by the same factor leaves priorities unchanged (it cancels in the ratio); only the 1.0 cap on x1.2 changes relative influence, which is why x0.8 gives tau = 1.",
+    "Weather is identical for every incident in the city, so (d) shifts all scores together; its band changes show what adding it would do, not a better ranking."
+  ]
+}

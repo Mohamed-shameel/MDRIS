@@ -1,0 +1,186 @@
+{
+  "model_name": "mdris-distilbert-urgency",
+  "task": "text_classification",
+  "base_model": "distilbert-base-uncased",
+  "trained_at": "2026-09-29T22:50:33+05:30",
+  "hardware": "NVIDIA GeForce RTX 2050 4GB",
+  "train_time_minutes": 3.7,
+  "dataset": {
+    "name": "HumAID flood events (Alam et al., ICWSM 2021)",
+    "url": "https://crisisnlp.qcri.org/humaid_dataset",
+    "licence": "CC BY-NC 4.0",
+    "events": [
+      "kerala_floods_2018",
+      "maryland_floods_2018",
+      "midwestern_us_floods_2019",
+      "srilanka_floods_2017"
+    ],
+    "splits": {
+      "train": 7816,
+      "val": 1675,
+      "test": 1675
+    }
+  },
+  "classes": [
+    "Low",
+    "Medium",
+    "High"
+  ],
+  "hyperparameters": {
+    "max_length": 128,
+    "batch": 16,
+    "learning_rate": 2e-05,
+    "epochs": 4,
+    "epochs_run": 3,
+    "early_stopping_patience": 1,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "fp16": true,
+    "loss": "cross-entropy weighted by inverse class frequency",
+    "class_weights": {
+      "Low": 0.7153,
+      "Medium": 0.3975,
+      "High": 1.8872
+    },
+    "seed": 42
+  },
+  "validation": {
+    "best_val_macro_f1": 0.7897089624643986,
+    "history": [
+      {
+        "epoch": 1.0,
+        "eval_loss": 0.5454754829406738,
+        "eval_macro_f1": 0.7776371311560718,
+        "eval_accuracy": 0.8029850746268656
+      },
+      {
+        "epoch": 2.0,
+        "eval_loss": 0.5202082991600037,
+        "eval_macro_f1": 0.7897089624643986,
+        "eval_accuracy": 0.8143283582089552
+      },
+      {
+        "epoch": 3.0,
+        "eval_loss": 0.6303824186325073,
+        "eval_macro_f1": 0.7871382682035799,
+        "eval_accuracy": 0.8173134328358209
+      }
+    ]
+  },
+  "metrics": {
+    "test": {
+      "accuracy": 0.8048,
+      "macro_f1": 0.7705,
+      "weighted_f1": 0.8071,
+      "per_class": {
+        "Low": {
+          "precision": 0.7558,
+          "recall": 0.8046,
+          "f1": 0.7794,
+          "support": 527
+        },
+        "Medium": {
+          "precision": 0.8808,
+          "recall": 0.8186,
+          "f1": 0.8486,
+          "support": 948
+        },
+        "High": {
+          "precision": 0.6352,
+          "recall": 0.74,
+          "f1": 0.6836,
+          "support": 200
+        }
+      },
+      "confusion_matrix": [
+        [
+          424,
+          70,
+          33
+        ],
+        [
+          120,
+          776,
+          52
+        ],
+        [
+          17,
+          35,
+          148
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "per_event_macro_f1": {
+        "kerala_floods_2018": 0.7623,
+        "maryland_floods_2018": 0.8895,
+        "midwestern_us_floods_2019": 0.6252,
+        "srilanka_floods_2017": 0.7239
+      },
+      "per_event_n": {
+        "kerala_floods_2018": 1188,
+        "maryland_floods_2018": 97,
+        "midwestern_us_floods_2019": 305,
+        "srilanka_floods_2017": 85
+      }
+    }
+  },
+  "baselines": {
+    "majority": {
+      "name": "Majority class",
+      "accuracy": 0.566,
+      "macro_f1": 0.2409,
+      "weighted_f1": 0.4091,
+      "per_class_f1": {
+        "Low": 0.0,
+        "Medium": 0.7228,
+        "High": 0.0
+      },
+      "predicts": "Medium"
+    },
+    "tfidf_lr": {
+      "name": "TF-IDF + LR",
+      "accuracy": 0.7863,
+      "macro_f1": 0.7494,
+      "weighted_f1": 0.7876,
+      "per_class_f1": {
+        "Low": 0.7472,
+        "Medium": 0.8358,
+        "High": 0.6651
+      },
+      "config": "TfidfVectorizer(ngram_range=(1,2), min_df=2) + LogisticRegression(class_weight='balanced', max_iter=2000)"
+    },
+    "zero_shot": {
+      "name": "Zero-shot NLI",
+      "accuracy": 0.3027,
+      "macro_f1": 0.2514,
+      "weighted_f1": 0.3112,
+      "per_class_f1": {
+        "Low": 0.151,
+        "Medium": 0.4291,
+        "High": 0.1741
+      },
+      "model": "typeform/distilbert-base-uncased-mnli",
+      "hypotheses": {
+        "High": "someone urgently needs rescue, help or medical aid",
+        "Medium": "damage, warnings or ongoing relief work",
+        "Low": "sympathy, prayers or unrelated information"
+      },
+      "hypothesis_template": "{}."
+    }
+  },
+  "figures": [
+    "figures/confusion_matrix.png",
+    "figures/training_curve.png",
+    "figures/baseline_comparison.png"
+  ],
+  "evaluated_on": "NVIDIA GeForce RTX 2050 4GB",
+  "notes": [
+    "Urgency labels are mapped from HumAID information-type categories (section 5.2.3); they are not human urgency judgements.",
+    "Headline metric is macro-F1 because Medium is 57% of the data.",
+    "Kerala 2018 is 71% of the test split; the small events have noisy per-event scores (see per_event_n)."
+  ]
+}

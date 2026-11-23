@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Console theme: light blue-white government-console style ─────────────── */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Barlow Semi Condensed", "Inter", ui-sans-serif, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-navy-950: #071a4d;
+  --color-navy-900: #0b2466;
+  --color-navy-800: #15317f;
+  --color-navy-700: #274593;
+  --color-console-bg: #f3f7fc;
+  --color-console-side: #f7fafe;
+  --color-console-line: #d9e4f2;
+  --color-console-soft: #eaf2fd;
+  --color-console-active: #e1ecfb;
+  --color-console-label: #5b6b85;
+  --color-accent: #2f7cf6;
+  --color-accent-dark: #1f66dc;
+  --color-saffron: #f59a3c;
+  --color-indiagreen: #1f9d4c;
+}
+
+@layer base {
+  :root {
+    --background: 214 60% 97%;
+    --foreground: 224 80% 22%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 80% 22%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 80% 22%;
+    --primary: 217 92% 57%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 214 70% 95%;
+    --secondary-foreground: 224 80% 22%;
+    --muted: 214 45% 95%;
+    --muted-foreground: 218 19% 44%;
+    --accent: 214 70% 95%;
+    --accent-foreground: 224 80% 22%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 48% 90%;
+    --input: 214 48% 90%;
+    --ring: 217 92% 57%;
+    --radius: 0.625rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-console-bg text-slate-700 font-sans antialiased;
+  }
+  h1, h2, h3 {
+    @apply text-navy-900;
+  }
+}
+
+/* Section / page titles in the condensed display face */
+.console-title {
+  @apply font-display font-bold text-navy-900 tracking-tight;
+}
+.console-section {
+  @apply font-display font-bold uppercase tracking-wide text-navy-900;
+}
+.console-label {
+  @apply text-[11px] font-semibold uppercase tracking-[0.12em] text-console-label;
+}
+
+/* Leaflet tiles must not be constrained by Tailwind's img reset */
+.leaflet-container img {
+  max-width: none !important;
+}
